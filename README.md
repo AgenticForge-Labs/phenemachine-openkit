@@ -3,9 +3,9 @@
 **Open hardware for automated Petri-dish imaging.** A 3D-printed workcell around the SO-ARM102 arm: the arm takes a
 dish from a rack, sets it on a backlight under a camera, and puts it back.
 
-[![The OpenKit arm moving dish carriers (simulation); tap for the full video](media/preview.gif)](https://github.com/user-attachments/assets/67908b43-24ca-4f96-9f72-5ab08ad099c5)
+[![The OpenKit arm moving dish carriers (simulation); tap for the full video](media/preview.gif)](media/openkit.mp4)
 
-**[▶ Watch the 60-second video with sound](https://github.com/user-attachments/assets/67908b43-24ca-4f96-9f72-5ab08ad099c5)** · [download](media/openkit.mp4). All motion shown is simulation.
+**[▶ Watch the 60-second video with sound](media/openkit.mp4)**. All motion shown is simulation.
 
 > **Concept design.** Nothing here has been printed, measured, load-tested or run on a robot. It is a non-industrial
 > platform, and long-term use requires motor replacement. Test-print and check every fit before building a full kit.
