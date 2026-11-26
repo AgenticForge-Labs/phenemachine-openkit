@@ -2,7 +2,15 @@
 
 PheneMachine OpenKit hardware. Licensed under CERN-OHL-S-2.0; see [LICENSE](LICENSE).
 
-Source Location: this repository.
+Source Location: https://github.com/AgenticForge-Labs/phenemachine-openkit
+
+## Not covered by the licence
+
+`media/openkit.mp4` (including its soundtrack) and `media/preview.gif`, the logo shown in them, and the PheneMachine
+and Phenotyper names are © AgenticForge Labs, all rights reserved. The soundtrack was generated with a third-party
+music model.
+
+## Upstream references
 
 The design refers to published dimensions of these upstream open projects. Their own licences apply to their files,
 which are not copied here.
