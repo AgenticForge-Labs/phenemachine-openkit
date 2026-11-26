@@ -3,9 +3,9 @@
 **Open hardware for automated Petri-dish imaging.** A 3D-printed workcell around the SO-ARM102 arm: the arm takes a
 dish from a rack, sets it on a backlight under a camera, and puts it back.
 
-[![The OpenKit arm moving dish carriers (simulation); click for the full video](media/preview.gif)](media/openkit.mp4)
+https://github.com/user-attachments/assets/67908b43-24ca-4f96-9f72-5ab08ad099c5
 
-**[▶ Watch the 60-second video](media/openkit.mp4)** (with sound). All motion shown is simulation.
+All motion shown is simulation. [Download the 60-second video](media/openkit.mp4).
 
 > **Concept design.** Nothing here has been printed, measured, load-tested or run on a robot. It is a non-industrial
 > platform, and long-term use requires motor replacement. Test-print and check every fit before building a full kit.
@@ -70,7 +70,7 @@ Hardware design files and CAD source are licensed under the
 hardware; if you distribute a modified design or products made from it, you must share your changes under the same
 licence.
 
-The video and its soundtrack, the animation, the logo and the PheneMachine and Phenotyper names are **not** covered by
+The video and its soundtrack, the logo and the PheneMachine and Phenotyper names are **not** covered by
 that licence and are reserved. Do not present your own build or product as a PheneMachine product. See
 [NOTICE.md](NOTICE.md).
 

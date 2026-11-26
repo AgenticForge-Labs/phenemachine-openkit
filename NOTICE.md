@@ -6,7 +6,7 @@ Source Location: https://github.com/AgenticForge-Labs/phenemachine-openkit
 
 ## Not covered by the licence
 
-`media/openkit.mp4` (including its soundtrack) and `media/preview.gif`, the logo shown in them, and the PheneMachine
+`media/openkit.mp4` and the copy embedded in the README (including the soundtrack), the logo shown in it, and the PheneMachine
 and Phenotyper names are © AgenticForge Labs, all rights reserved. The soundtrack was generated with a third-party
 music model.
 
