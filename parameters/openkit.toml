@@ -1,0 +1,230 @@
+# PheneMachine OpenKit minimum kit (SO-ARM102), round dishes only · millimetres.
+# Carrier 140 x 100 mm sized for the largest round base found (o94 mm, Greiner 94/16 class) with a
+# 100 mm lid and 16 mm seated height; 2 racks x 10 shelves at 31.5 mm pitch on 6 mm tines.
+# Shelves stack on 14 mm tenons / short rear alignment keys and bolt directly to 20x40 T-nuts. Concept CAD: nothing here is printed,
+# measured or load-qualified; dish dimensions are catalogue listings, not measurements.
+
+[interface]
+robot_spacing = 128.0        # outer tine centre-to-centre spacing on the 4th-motor robot fork
+dock_spacing = 104.0         # inner tine centre-to-centre spacing on the stacking shelf fork (inner edge |x|=47.5..49 mm, clear of ø94 mm window)
+carrier_margin = 1.5          # carrier outer side rim beyond the robot tine root edge (carrier width = 140.0 mm)
+
+[tine]                        # shared plan profile for the robot and shelf dock tines
+root_width = 9.0             # carries the locating ridge
+tip_width = 6.0
+depth = 6.0                  # 6 mm (was 7): buys 1 mm of headroom for 16 mm dishes at 31.5 mm pitch; both forks print flat on Z = -6
+tip_lead_length = 8.0        # top lead-in ramp at the tip
+tip_lead_drop = 1.2
+root_fillet = 3.5            # curved plan gusset where a tine meets its bridge
+robot_length = 80.0          # robot tine tip at -52 + 80 = +28 mm
+robot_root_y = -52.0
+dock_length = 94.0           # dock tine tip at +54 - 94 = -40 mm (lead-in ramp -40..-32 mm, clear of front pad)
+dock_root_y = 57.0
+
+[rib]                         # locating ridge on every tine and matching groove in the carrier
+height = 3.0                 # primary ridge above the support plane
+vertical_height = 1.4        # lower vertical wall holds the carrier during arm rotation
+top_width = 1.8              # flat crest
+flank_angle_deg = 45.0       # 45-degree self-supporting lead-in above the vertical wall
+half_length = 18.0           # 36 mm ridge centred on Y = 0 so a 180-deg turn maps groove onto groove
+clearance = 0.20             # lateral gap per side at the support plane
+roof_gap = 0.4               # groove is this much deeper than the primary ridge
+secondary_relief = 0.7       # +X ridge is narrower per side in X: sets Y and yaw without over-constraining X
+pad_relief = 0.5             # dock tine top sits this far below the four support pads
+pad_length = 8.0
+pad_y = 26.0                 # support pads at +/- 26 mm on both dock tines, clear of ridge ends and tip ramp
+
+[carrier]
+thickness = 6.2              # underside datum Z = 0 to nest rim
+seat_z = 1.0                 # low dish support plane
+nest_depth = 5.2             # circular recess depth for the 100 mm round dish
+ledge_width = 1.0            # 1.0 mm radial rim under a o94 mm base
+window_diameter = 85.2       # o85.2 mm through-opening (88.2 mm nest minus the 1.5 mm OpenKit lip per side; catches ~86.4 mm bottom)
+fit_clearance = 0.25         # snug radial clearance per side for Celltreat #229697 (o88.2 mm nest around ~87.7 mm seated base)
+wall = 2.5                   # minimum front/back wall
+openkit_rim_wall = 2.5        # front/back rim: 95 mm max nest + 2 x 2.5 = 100 mm carrier length
+openkit_lip = 1.5             # OpenKit: always a 1.5 mm radial lip from the nest wall
+openkit_width = 140.0         # carrier X width (round only; no square corners to support)
+openkit_length = 100.0        # shared carrier Y length (accommodates up to max_base_diameter = 94.0 mm)
+corner_cut_x = 22.0           # kept from the shared round/square carrier
+corner_cut_y = 24.0           # reduced from 30
+grip_floor = 2.5
+corner_radius = 6.0         # softens the outer corners
+edge_chamfer = 0.5
+grip_width = 16.0            # four finger scallops on the front/back rim
+grip_x = 20.0
+
+[dish]                        # [PD-CELLTREAT-229697] default kit dish; max round envelope [PD-ROUND-OK] is 94/100/16 mm
+shape = "round"
+base_diameter = 87.7         # Celltreat #229697 seated base OD at 5.2 mm nest rim (tapers ~86.4 mm bottom to 88.7 mm upper body)
+max_base_diameter = 94.0     # largest round base supported by the 140 x 100 mm carrier outer ([PD-ROUND-OK])
+base_x = 87.7                # compatibility alias for base_diameter
+base_y = 87.7                # compatibility alias for base_diameter
+corner_radius = 43.85        # circular (radius = diameter / 2)
+base_height = 14.1           # Celltreat #229697 drawing base profile height
+total_height = 15.6          # Celltreat #229697 drawing lidded height (fits <= 16.0 mm max envelope)
+lid_outer = 92.4             # Celltreat #229697 lid OD (92.3 mm assembly / 92.4 mm lid detail view)
+lid_wall = 1.0               # printable lid skirt wall thickness
+lid_skirt_above_seat = 6.8   # 15.6 mm total - 8.8 mm lid skirt (clears the 5.2 mm nest rim by 1.6 mm)
+lid_top = 1.5                # top thickness above base_height (14.1 + 1.5 = 15.6 mm total height)
+base_wall = 1.2              # printable stand-in wall (three 0.4 mm lines)
+base_floor = 1.0             # printable stand-in floor
+mass_g = 45.0                # loaded 100 mm round agar Petri dish
+
+[rail]                        # optional 2040 / printed spine backing parameters for compatibility
+face = 40.0
+height = 20.0
+slot_pitch = 20.0
+slot_opening = 6.0
+slot_cavity_width = 11.9
+slot_depth = 5.5
+slot_floor_width = 7.0
+lip_thickness = 1.5
+slot_shoulder = 1.5
+corner_radius = 1.5
+bore_diameter = 4.3
+chamber_end_width = 5.2
+chamber_mid_width = 11.2
+chamber_height = 17.1
+chamber_end_straight = 2.1
+below = 40.5                 # clears the 40 mm four-sided foot collar by 0.5 mm
+above = 14.5                 # rack rail length = 40.5 + 315 + 14.5 = 370.0 mm (14.5 mm inside top cap)
+
+[stack]
+pitch = 31.5                 # 2 x 10 OpenKit layout
+shelves = 10                 # experimental 10-shelf layout
+plate_clearance_target = 8.0 # lid top (17.0 mm) to tines above (25.5 mm) = 8.5 mm before the 5.7 mm lift
+
+[dock]
+stack_joint = "deep_keyed"
+beam_depth_y = 22.0          # self-stacking tower column depth (full 22 mm; dock root moved to 57 so rail face = 79)
+column_width = 58.0          # wide self-supporting tower column across X
+gusset = 18.0                # 45-degree side webs bracing the column to the dock tine roots
+tenon_pitch_x = 44.0         # two interlocking tenons/sockets at x = +/- 22 mm (clear of middle T-nut bores)
+tenon_width_x = 8.5          # male tenon X width
+tenon_depth_y = 10.0         # male tenon Y depth
+tenon_height = 14.0          # taller tenon (was 8): 12 mm straight engagement roughly halves free tilt
+tenon_chamfer = 2.0          # 45-degree lead-in chamfer on top of each male tenon
+socket_clearance_xy = 0.15   # per-side XY clearance in the female socket (was 0.20; check with a printed coupon)
+socket_roof_gap = 0.5        # vertical clearance above the tenon before the 45-degree self-supporting socket roof
+tie_rod_bore = 0.0           # removed: shelves and foot bolt directly to 20x40 T-nuts
+t_nut_bolt_diameter = 5.5    # M5 clearance bore through shelf and 4-sided foot collar
+t_nut_counterbore_diameter = 11.0  # recessed pocket for ISO 7380 M5 button head (o9.5 mm + 0.75 mm/side)
+t_nut_flange_thickness = 4.0 # solid wall behind counterbore (M5x8 protrudes 4.0 mm: 1.5 lip + 2.5 in T-nut)
+t_nut_z_from_bed = 15.75     # bolt center at mid-shelf height (z = +9.75 mm), between upper & lower T-keys
+key_z_min_above_bed = 1.5    # lower & upper T-keys start 1.5 mm from bed/shoulder
+t_nut_pocket_height = 10.9   # 10.9 mm bay between lower & upper T-keys seats/aligns 10 mm T-nut
+key_neck_width = 5.6
+key_neck_clearance = 0.3
+key_head_width = 11.3
+key_head_shoulder = 1.1
+key_floor_clearance = 0.5
+key_end_chamfer = 0.6
+lock_hole = 0.0              # no M3 lock screw: it would cross the tie rod; the clamped rod holds the stack
+lock_z_from_top = 6.0
+counterbore_diameter = 6.5
+counterbore_depth = 4.0
+
+[hardware]                    # [HW-ISO] & Feetech STS3215 fastener sizes
+m5_length = 8.0              # ISO 7380 M5 x 8 mm button head cap screw (standard 20-series T-nut kit)
+m5_head_diameter = 9.5       # ISO 7380 M5 max head OD
+m5_head_height = 2.75        # ISO 7380 M5 max button head height
+m6_length = 8.0
+m6_head_diameter = 5.5
+m6_head_height = 3.0
+t_nut_width = 10.0           # 20-series M5 T-nut flange width inside the 11.9 mm slot cavity
+t_nut_length = 10.0          # 20-series M5 T-nut length along the slot
+t_nut_thickness = 3.4        # 20-series M5 T-nut body thickness inside the 4.0 mm cavity
+# Floor-to-module M5 hex-bolt post hardware ([HW-ISO] nominal dimensions)
+floor_bolt_diameter = 5.0           # ISO 4017 / DIN 933 M5 nominal thread OD
+floor_bolt_length = 20.0            # ISO 4017 M5 x 20 mm full-thread hex bolt
+seam_bolt_length = 10.0            # ISO 4017 M5 x 10 hex bolt for the optional floor seam clamps (tip ~0.2 mm proud of the 14 mm tile)
+floor_bolt_hex_af = 8.0             # ISO 4017 M5 hex head width across flats (max 8.00, min 7.78)
+floor_bolt_head_height = 3.5        # ISO 4017 M5 hex head nominal height (max 3.65 mm)
+floor_washer_id = 5.3               # ISO 7089 / DIN 125A M5 flat washer ID
+floor_washer_od = 10.0              # ISO 7089 / DIN 125A M5 flat washer OD
+floor_washer_thickness = 1.0        # ISO 7089 / DIN 125A M5 flat washer thickness
+floor_nut_hex_af = 8.0              # ISO 4032 M5 hex nut width across flats (matches bolt head)
+floor_nut_height = 4.7              # ISO 4032 M5 hex nut max height (DIN 934 is 4.0 mm)
+
+[robot]
+# Assumptions based only on printed link envelope; not measured horn dimensions.
+mount_style = "so102_candidate"
+horn_face_span = 48.0
+horn_screw_pcd = 16.0
+horn_screw_diameter = 3.2
+horn_pilot_diameter = 6.4
+ear_height = 28.0
+horn_slot_radial_travel = 2.0 # PCD nominal +/- 2 mm
+# 4th-motor (wrist_flex) SO-ARM101 direct clevis mount
+bridge_depth_y = 9.0        # cross-bridge behind robot_root_y (-62 to -52 mm)
+pad_half_width = 24.1        # outer half-width of the two Motor-4 clevis ears (inner span = 36.2 mm)
+clevis_inner_half_x = 18.1   # matches the 36.2 mm active-to-passive horn span of STS3215 Motor 4
+clevis_ear_thickness = 6.0   # 6.0 mm thick PETG clevis ears on each side of Motor 4
+clevis_top_z = 7.0           # clevis ear runs from z = -7.0 (print bed) to z = +7.0 (14 mm tall around Z = 0 axis)
+pad_fillet = 3.0
+flange_y = -74.0             # Preliminary datum offset: preserves 106 mm withdrawal and tested reach; attachment unverified
+pad_size = 28.0              # clevis ear Y extent (-85 to -63 mm)
+pilot_diameter = 7.0         # STS3215 horn center boss bore in clevis ear
+pilot_height = 2.0
+horn_pcd = 14.0              # 4 x M2.5 mounting circle on the Feetech STS3215 servo horn
+horn_screw_clearance = 2.7
+m6_clearance = 2.7
+m6_counterbore = 5.0
+m6_counterbore_depth = 2.0
+dowel_depth = 3.0
+pitch_offset_deg = 35.0      # horn clocking offset so q4 = 0 centers the level fork in the 320 mm vertical workspace
+
+[flange]                      # Reference envelope of SO-ARM101 Motor 4 (Feetech STS3215-03a at wrist_flex)
+servo_width_x = 36.2         # across the active and passive horn faces
+servo_body_width_x = 24.8    # STS3215 plastic case width
+servo_height_z = 24.8        # STS3215 case height in fork frame
+servo_front_from_axis = 10.2 # distal extent from wrist_flex axis toward the fork bridge
+servo_back_from_axis = 35.2  # proximal extent from wrist_flex axis toward the elbow
+face_diameter = 20.0         # STS3215 horn diameter
+face_height = 2.0
+body_diameter = 24.8
+body_height = 35.2
+lobe_radius = 12.4
+lobe_reach = 35.2
+lobe_half_width = 12.4
+recess_diameter = 7.0
+recess_depth = 2.0
+pcd = 14.0
+thread_model_diameter = 2.5
+thread_depth = 6.0
+pin_radius_position = 7.0
+pin_diameter = 2.5
+pin_depth = 4.0
+
+[imager]                      # Printable SO-ARM101 USB camera bracket that stacks on the imaging dock
+camera_height_above_datum = 165.0
+board_outer_size = 38.0      # standard 38x38 / 32x32 mm UVC USB board camera used with SO-ARM101 / LeRobot
+hole_spacing_outer = 34.0    # M2.5 mounting holes for 38x38 mm board camera
+hole_spacing_inner = 28.0    # M2.5 mounting holes for 32x32 mm board camera
+lens_bore_diameter = 18.0    # clearance for M12 wide-angle lens barrel
+tripod_slot_width = 6.5      # 1/4"-20 clearance slot for standard USB webcams (e.g. C920 / C960)
+arm_reach_y = 63.0           # from column centre (y = 63 mm) out to optical center (y = 0 mm)
+arm_thickness_z = 10.0
+arm_width_x = 36.0
+backlight_size = 98.0          # rectangular backlight the tray centres under the dish
+backlight_thickness = 8.0
+backlight_below_datum = 22.0   # light top sits this far below the carrier datum
+dock_height_above_floor = 177.5 # 5 foot base + 40.5 rail below + 6 tine + 4 x 31.5: imaging dock datum above the floor top
+
+[printed_rail]
+shelves = 2
+below = 40.5
+top_margin = 14.5
+
+[material]                    # [MAT-PETG] PETG print assumptions
+density_g_cm3 = 1.27
+modulus_mpa = 1700.0
+solid_fraction = 0.55
+
+[motion]                      # nominal local transfer keyframes
+insertion_clearance = 4.2    # ridge height 3.0 + 1.2 running clearance
+lift = 5.7                   # clears the 3.0 mm dock ridges by 2.7 mm
+withdrawal = 106.0           # withdraws the 100 mm carrier clear of the shelf column
+max_sample_step = 2.0
+interference_volume_mm3 = 0.0001
